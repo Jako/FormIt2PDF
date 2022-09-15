@@ -1,0 +1,283 @@
+{
+  "name": "FormIt2PDF",
+  "lowCaseName": "formit2pdf",
+  "description": "FormIt hook for sending form submissions as PDF attachment",
+  "author": "Thomas Jakobi",
+  "version": "1.0.0",
+  "package": {
+    "elements": {
+      "chunks": [
+        {
+          "name": "tplFormIt2PDFText",
+          "file": "tpltext.html"
+        },
+        {
+          "name": "tplFormIt2PDFStyle",
+          "file": "tplstyle.css"
+        }
+      ],
+      "snippets": [
+        {
+          "name": "FormIt2PDF",
+          "description": "FormIt to Resource hook.",
+          "file": "formit2pdf.hook.php",
+          "properties": [
+            {
+              "name": "pdfFilename",
+              "value": "attachment.pdf"
+            },
+            {
+              "name": "pdfMode",
+              "value": ""
+            },
+            {
+              "name": "pdfFormat",
+              "value": ""
+            },
+            {
+              "name": "pdfDefaultFontSize",
+              "value": ""
+            },
+            {
+              "name": "pdfDefaultFont",
+              "value": ""
+            },
+            {
+              "name": "pdfMgl",
+              "value": ""
+            },
+            {
+              "name": "pdfMgr",
+              "value": ""
+            },
+            {
+              "name": "pdfMgt",
+              "value": ""
+            },
+            {
+              "name": "pdfMgb",
+              "value": ""
+            },
+            {
+              "name": "pdfMgh",
+              "value": ""
+            },
+            {
+              "name": "pdfMgf",
+              "value": ""
+            },
+            {
+              "name": "pdfOrientation",
+              "value": ""
+            },
+            {
+              "name": "pdfCustomFonts",
+              "value": ""
+            },
+            {
+              "name": "pdfCustomFontsFolder",
+              "value": ""
+            },
+            {
+              "name": "pdfTextTpl",
+              "value": "tplFormIt2PDFText"
+            },
+            {
+              "name": "pdfStyleTpl",
+              "value": "tplFormIt2PDFStyle"
+            },
+            {
+              "name": "pdfTitle",
+              "value": ""
+            },
+            {
+              "name": "pdfAuthor",
+              "value": ""
+            },
+            {
+              "name": "pdfCreator",
+              "value": ""
+            },
+            {
+              "name": "pdfUserPassword",
+              "value": ""
+            },
+            {
+              "name": "pdfOwnerPassword",
+              "value": ""
+            },
+            {
+              "name": "pdfPermissions",
+              "value": ""
+            },
+            {
+              "name": "pdfMPDFMethods",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    "systemSettings": [
+      {
+        "key": "debug",
+        "type": "combo-boolean",
+        "area": "system",
+        "value": "0"
+      },
+      {
+        "key": "mode",
+        "type": "textfield",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "format",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "A4"
+      },
+      {
+        "key": "defaultFontSize",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "0"
+      },
+      {
+        "key": "defaultFont",
+        "type": "textfield",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "mgl",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "15"
+      },
+      {
+        "key": "mgr",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "15"
+      },
+      {
+        "key": "mgt",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "16"
+      },
+      {
+        "key": "mgb",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "16"
+      },
+      {
+        "key": "mgh",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "9"
+      },
+      {
+        "key": "mgf",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "9"
+      },
+      {
+        "key": "orientation",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "P"
+      },
+      {
+        "key": "customFonts",
+        "type": "textarea",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "customFontsFolder",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "{core_path}components/customfonts/"
+      },
+      {
+        "key": "permissions",
+        "type": "textarea",
+        "area": "pdf",
+        "value": "[]"
+      },
+      {
+        "key": "userPassword",
+        "type": "textarea",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "ownerPassword",
+        "type": "textarea",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "mPDFMethods",
+        "type": "textfield",
+        "area": "pdf",
+        "value": "[]"
+      },
+      {
+        "key": "author",
+        "type": "textfield",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "creator",
+        "type": "textfield",
+        "area": "pdf",
+        "value": ""
+      },
+      {
+        "key": "textTpl",
+        "type": "textfield",
+        "area": "template",
+        "value": "tplFormIt2PDFText"
+      },
+      {
+        "key": "styleTpl",
+        "type": "textfield",
+        "area": "template",
+        "value": "tplFormIt2PDFStyle"
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "name": "php",
+      "version": ">=7.4"
+    },
+    {
+      "name": "modx",
+      "version": ">=2.8"
+    }
+  ],
+  "build": {
+    "readme": "docs/readme.md",
+    "license": "docs/license.md",
+    "changelog": "docs/changelog.md",
+    "options": {
+      "composer": true
+    },
+    "setupOptions": {
+      "source": "setup.options.php"
+    },
+    "resolver": {
+      "after": [
+        "resolve.composer.php",
+        "resolve.treehillstudio.php"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "treehillstudio/formit2pdf",
+  "description": "FormIt hook for sending form submissions as PDF attachment",
+  "authors": [
+    {
+      "name": "Thomas Jakobi",
+      "email": "office@treehillstudio.com",
+      "homepage": "https://treehillstudio.com"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "config": {
+    "platform": {
+      "php": "7.4.0"
+    }
+  },
+  "require": {
+    "php": ">=7.4.0",
+    "mpdf/mpdf": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TreehillStudio\\FormIt2PDF\\": "src/"
+    }
+  }
+}
