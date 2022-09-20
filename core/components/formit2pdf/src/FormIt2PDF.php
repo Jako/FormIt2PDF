@@ -42,7 +42,7 @@ class FormIt2PDF
      * The version
      * @var string $version
      */
-    public $version = '1.0.0';
+    public $version = '1.0.1';
 
     /**
      * The class options
@@ -138,6 +138,7 @@ class FormIt2PDF
             'ownerPassword' => $this->modx->getOption($this->namespace . '.ownerPassword', [], ''),
             'permissions' => $this->modx->getOption($this->namespace . '.permissions', [], ''),
             'mPDFMethods' => $this->modx->getOption($this->namespace . '.mPDFMethods', [], ''),
+            'multiSeparator' => $this->modx->getOption($this->namespace . '.multiSeparator', [], ', '),
         ]);
 
         $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));

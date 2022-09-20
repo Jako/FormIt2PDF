@@ -43,6 +43,8 @@ class FormIt2PDFHook extends Hook
             'ownerPassword' => $this->formit2pdf->getOption('ownerPassword'),
             'permissions' => $this->formit2pdf->getOption('permissions'),
             'mPDFMethods' => $this->formit2pdf->getOption('mPDFMethods'),
+            'multiSeparator' => $this->formit2pdf->getOption('multiSeparator'),
+            'multiWrapper' => $this->formit2pdf->getOption('multiWrapper'),
         ];
     }
 
@@ -83,7 +85,7 @@ class FormIt2PDFHook extends Hook
         $formfields = [];
         foreach ($values as $key => $value) {
             if (is_array($value)) {
-                $value = implode(', ', $value);
+                $value = implode($this->getProperty('multiSeparator'), $value);
             }
             $formfields[] = $key . ': ' . $value . "\n";
         }

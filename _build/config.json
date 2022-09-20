@@ -3,7 +3,7 @@
   "lowCaseName": "formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
   "author": "Thomas Jakobi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "package": {
     "elements": {
       "chunks": [
@@ -19,7 +19,7 @@
       "snippets": [
         {
           "name": "FormIt2PDF",
-          "description": "FormIt to Resource hook.",
+          "description": "FormIt hook for sending form submissions as PDF attachment",
           "file": "formit2pdf.hook.php",
           "properties": [
             {
@@ -112,6 +112,10 @@
             },
             {
               "name": "pdfMPDFMethods",
+              "value": ""
+            },
+            {
+              "name": "pdfMultiSeparator",
               "value": ""
             }
           ]
