@@ -434,6 +434,7 @@
                   <h1>Usage</h1>
                 
                 <h2 id="how-it-works">How it works</h2>
+<p>The FormIt2PDF hook creates a PDF file with the submitted form values. The PDF content can be set with the pdfTextTpl</p>
 <p>The FormIt hook uses the following properties. Most of the properties default to the value of the according system setting in the <code>formit2pdf</code> namespace.</p>
 <h3 id="hook-properties">Hook Properties</h3>
 <table>
@@ -446,117 +447,122 @@
 </thead>
 <tbody>
 <tr>
-<td>author</td>
+<td>pdfAuthor</td>
 <td>Author of the PDF file</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>creator</td>
+<td>pdfCreator</td>
 <td>Creator of the PDF file</td>
 <td>attachment.pdf</td>
 </tr>
 <tr>
-<td>styleTpl</td>
-<td>Template chunk for the PDF style</td>
-<td>(system setting)</td>
-</tr>
-<tr>
-<td>customFonts</td>
+<td>pdfCustomFonts</td>
 <td>JSON encoded object of custom fonts, see <a href="https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html#example">Fonts</a> in the mPDF documentation for the array format. Please copy the font files to the folder referenced in the <code>formit2pdf.customFontsFolder</code> system setting.</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>customFontsFolder</td>
+<td>pdfCustomFontsFolder</td>
 <td>Path to the custom fonts folder. If the path is not set or available, <code>formit2pdf.customFonts</code> is not used. The {core_path}, {base_path} and {assets_path} placeholders can be used in this setting.</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>defaultFont</td>
+<td>pdfDefaultFont</td>
 <td>Default font of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>defaultFontSize</td>
+<td>pdfDefaultFontSize</td>
 <td>Default font size of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>filename</td>
+<td>pdfFilename</td>
 <td>Filename of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>format</td>
+<td>pdfFormat</td>
 <td>PDF page size. If you want to change the orientation of a "named" PDF page size you have to append -L to the PDF page size string (i.e. A4-L).</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mPDFMethods</td>
-<td>JSON encoded array of callable mPDF method names</td>
-<td>(system setting)</td>
-</tr>
-<tr>
-<td>mgb</td>
+<td>pdfMgb</td>
 <td>Bottom Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mgf</td>
+<td>pdfMgf</td>
 <td>Footer Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mgh</td>
+<td>pdfMgh</td>
 <td>Header Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mgl</td>
+<td>pdfMgl</td>
 <td>Left Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mgr</td>
+<td>pdfMgr</td>
 <td>Right Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mgt</td>
+<td>pdfMgt</td>
 <td>Top Margin of the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>mode</td>
+<td>pdfMode</td>
 <td>mPDF mode. See <a href="https://mpdf.github.io/reference/mpdf-functions/mpdf.html#parameters">mode parameter</a> and <a href="https://mpdf.github.io/fonts-languages/choosing-a-configuration-v5-x.html">choosing a configuration</a> in the mPDF documentation for possible values.</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>orientation</td>
+<td>pdfMPDFMethods</td>
+<td>JSON encoded array of callable mPDF method names</td>
+<td>(system setting)</td>
+</tr>
+<tr>
+<td>pdfMultiSeparator</td>
+<td>The default separator for array values sent through checkboxes/multi-selects.</td>
+<td>(system setting)</td>
+</tr>
+<tr>
+<td>pdfOrientation</td>
 <td>PDF Orientation. If you want to change the orientation of a "named" PDF page size you have to append -L to the PDF page size string (i.e. A4-L).</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>ownerPassword</td>
+<td>pdfOwnerPassword</td>
 <td>Password for full access and permissions to the generated PDF</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>permissions</td>
+<td>pdfPermissions</td>
 <td>JSON encoded array of permissions granted to the end-user of the PDF file. see <a href="https://mpdf.github.io/reference/mpdf-functions/setprotection.html#parameters">permissions</a> in the mPDF documentation for possible values.</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>textTpl</td>
+<td>pdfStyleTpl</td>
+<td>Template chunk for the PDF style</td>
+<td>(system setting)</td>
+</tr>
+<tr>
+<td>pdfTextTpl</td>
 <td>Template chunk for the PDF text</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>title</td>
+<td>pdfTitle</td>
 <td>Title of the PDF file</td>
 <td>(system setting)</td>
 </tr>
 <tr>
-<td>userPassword</td>
+<td>pdfUserPassword</td>
 <td>Password required to open the generated PDF</td>
 <td>(system setting)</td>
 </tr>
@@ -582,11 +588,6 @@
 <td>creator</td>
 <td>Creator of the PDF file.</td>
 <td>{site_url} powered by FormIt2PDF/mPDF</td>
-</tr>
-<tr>
-<td>styleTpl</td>
-<td>Template chunk for the PDF style. You could use @FILE binding to retreive the chunk from a file.</td>
-<td>tplFormIt2PDFStyle</td>
 </tr>
 <tr>
 <td>customFonts</td>
@@ -659,6 +660,11 @@
 <td>-</td>
 </tr>
 <tr>
+<td>multiSeparator</td>
+<td>The default separator for array values sent through checkboxes/multi-selects.</td>
+<td><code>,</code></td>
+</tr>
+<tr>
 <td>orientation</td>
 <td>If you want to change the orientation of a "named" PDF page size you have to append -L to the PDF page size string (i.e. A4-L).</td>
 <td>P</td>
@@ -669,14 +675,19 @@
 <td>-</td>
 </tr>
 <tr>
-<td>textTpl</td>
-<td>Template chunk for the PDF content. You could use @FILE binding to retreive the chunk from a file.</td>
-<td>tplFormIt2PDFText</td>
-</tr>
-<tr>
 <td>permissions</td>
 <td>JSON encoded array of permissions granted to the end-user of the PDF file. see <a href="https://mpdf.github.io/reference/mpdf-functions/setprotection.html#parameters">permissions</a> in the mPDF documentation for possible values.</td>
 <td>-</td>
+</tr>
+<tr>
+<td>styleTpl</td>
+<td>Template chunk for the PDF style. You could use @FILE binding to retreive the chunk from a file.</td>
+<td>tplFormIt2PDFStyle</td>
+</tr>
+<tr>
+<td>textTpl</td>
+<td>Template chunk for the PDF content. You could use @FILE binding to retreive the chunk from a file.</td>
+<td>tplFormIt2PDFText</td>
 </tr>
 <tr>
 <td>userPassword</td>
