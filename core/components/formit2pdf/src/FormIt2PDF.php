@@ -90,6 +90,7 @@ class FormIt2PDF
 
         // Load some default paths for easier management
         $this->options = array_merge([
+
             'namespace' => $this->namespace,
             'version' => $this->version,
             'corePath' => $corePath,
@@ -114,6 +115,8 @@ class FormIt2PDF
         $lexicon->load($this->namespace . ':default');
 
         $this->packageName = $this->modx->lexicon('formit2pdf');
+
+        $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));
 
         // Add default options
         $this->options = array_merge($this->options, [
@@ -140,8 +143,6 @@ class FormIt2PDF
             'mPDFMethods' => $this->modx->getOption($this->namespace . '.mPDFMethods', [], ''),
             'multiSeparator' => $this->modx->getOption($this->namespace . '.multiSeparator', [], ', '),
         ]);
-
-        $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));
     }
 
     /**
