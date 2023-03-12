@@ -82,7 +82,7 @@ class FormIt2PDFHook extends Hook
 
         $values = $this->hook->getValues();
         $formfields = [];
-        foreach ($values as $key => $value) {
+        foreach ($values as $key => &$value) {
             if (is_array($value)) {
                 $value = implode($this->getProperty('multiSeparator'), $value);
             }
