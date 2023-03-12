@@ -44,7 +44,6 @@ class FormIt2PDFHook extends Hook
             'permissions' => $this->formit2pdf->getOption('permissions'),
             'mPDFMethods' => $this->formit2pdf->getOption('mPDFMethods'),
             'multiSeparator' => $this->formit2pdf->getOption('multiSeparator'),
-            'multiWrapper' => $this->formit2pdf->getOption('multiWrapper'),
         ];
     }
 
