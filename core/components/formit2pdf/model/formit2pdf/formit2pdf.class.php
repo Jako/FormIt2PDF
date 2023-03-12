@@ -2,7 +2,7 @@
 /**
  *  FormIt2PDF
  *
- * Copyright 2022 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2022-2023 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package formit2pdf
  * @subpackage classfile
