@@ -1,6 +1,7 @@
 {
   "name": "treehillstudio/formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "Thomas Jakobi",
@@ -16,6 +17,7 @@
   },
   "require": {
     "php": ">=7.4.0",
+    "ext-json": "*",
     "mpdf/mpdf": "^8.0"
   },
   "autoload": {

@@ -1,8 +1,8 @@
 <?php
 /**
- *  FormIt2PDF
+ * FormIt2PDF
  *
- * Copyright 2022-2023 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2022-2024 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package formit2pdf
  * @subpackage classfile

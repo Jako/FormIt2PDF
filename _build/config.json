@@ -3,7 +3,7 @@
   "lowCaseName": "formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
   "author": "Thomas Jakobi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "package": {
     "elements": {
       "chunks": [
@@ -116,6 +116,10 @@
             },
             {
               "name": "pdfMultiSeparator",
+              "value": ""
+            },
+            {
+              "name": "pdfStationery",
               "value": ""
             }
           ]
@@ -237,6 +241,11 @@
         "key": "styleTpl",
         "area": "template",
         "value": "tplFormIt2PDFStyle"
+      },
+      {
+        "key": "stationery",
+        "area": "template",
+        "value": ""
       }
     ]
   },

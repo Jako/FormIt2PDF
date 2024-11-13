@@ -2,8 +2,7 @@
 /**
  * FormIt2PDF
  *
- * Copyright 2012-2016 by Alan Pich <alan.pich@gmail.com>
- * Copyright 2016-2021 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2022-2024 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package formit2pdf
  * @subpackage classfile
@@ -13,6 +12,7 @@ namespace TreehillStudio\FormIt2PDF;
 
 use modX;
 use Mpdf\MpdfException;
+use TreehillStudio\FormIt2PDF\Helper\Parse;
 use xPDO;
 
 /**
@@ -42,7 +42,7 @@ class FormIt2PDF
      * The version
      * @var string $version
      */
-    public $version = '1.0.2';
+    public $version = '1.0.3';
 
     /**
      * The class options
@@ -57,20 +57,9 @@ class FormIt2PDF
     public $pdf;
 
     /**
-     * Template cache
-     * @var array $_tplCache
+     * @var Parse $parse
      */
-    private $_tplCache;
-
-    /**
-     * Valid binding types
-     * @var array $_validTypes
-     */
-    private $_validTypes = [
-        '@CHUNK',
-        '@FILE',
-        '@INLINE'
-    ];
+    public $parse = null;
 
     /**
      * FormIt2PDF constructor
@@ -142,7 +131,10 @@ class FormIt2PDF
             'permissions' => $this->modx->getOption($this->namespace . '.permissions', [], ''),
             'mPDFMethods' => $this->modx->getOption($this->namespace . '.mPDFMethods', [], ''),
             'multiSeparator' => $this->modx->getOption($this->namespace . '.multiSeparator', [], ', '),
+            'stationery' => $this->modx->getOption($this->namespace . '.stationery', [], ''),
         ]);
+
+        $this->parse = new Parse($modx);
     }
 
     /**
@@ -207,8 +199,8 @@ class FormIt2PDF
 
         // Parse template chunks
         $placeholder['tplPath'] = $this->getOption('assets_path');
-        $html = $this->getChunk($pdfTpl, $placeholder);
-        $css = $this->getChunk($styleTpl, $placeholder);
+        $html = $this->parse->getChunk($pdfTpl, $placeholder);
+        $css = $this->parse->getChunk($styleTpl, $placeholder);
         unset($placeholder);
 
         if ($this->getOption('debug')) {
@@ -241,6 +233,21 @@ class FormIt2PDF
                 'orientation' => $this->getOption('orientation', $pdfOptions, 'P'),
                 'customFonts' => $this->getOption('customFonts', $pdfOptions, '[]')
             ]);
+
+            // Use a PDF file as a stationery
+            $stationery = $this->getOption('stationery', $pdfOptions, '');
+            if ($stationery) {
+                $stationery = str_replace(array(
+                    '{base_path}',
+                    '{core_path}',
+                    '{assets_path}',
+                ), array(
+                    $this->modx->getOption('base_path', null, MODX_BASE_PATH),
+                    $this->modx->getOption('core_path', null, MODX_CORE_PATH),
+                    $this->modx->getOption('assets_path', null, MODX_ASSETS_PATH),
+                ), $stationery);
+                $this->pdf->SetDocTemplate($stationery, true);
+            }
 
             $this->pdf->SetTitle($this->getOption('title', $pdfOptions, $this->modx->getOption('site_name')));
             $this->pdf->SetAuthor($this->getOption('author', $pdfOptions, $this->modx->getOption('site_name')));
@@ -277,108 +284,5 @@ class FormIt2PDF
             $this->modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not generate the pdf: ' . $e->getMessage(), '', 'PDFResource');
             return '';
         }
-    }
-
-    /**
-     * Parse a chunk (with template bindings)
-     * Modified parseTplElement method from getResources package (https://github.com/opengeek/getResources)
-     *
-     * @param string type The template binding type.
-     * @param string $source The source of the parsed template (depends on template binding type).
-     * @param array|null $properties An array of options.
-     * @return string|bool The parsed chunk or false.
-     */
-    private function parseChunk($type, $source, $properties = null)
-    {
-        $output = false;
-
-        if (!is_string($type) || !in_array($type, $this->_validTypes)) {
-            $type = $this->modx->getOption('tplType', $properties, '@CHUNK');
-        }
-
-        $content = false;
-        switch ($type) {
-            case '@FILE':
-                $path = $this->modx->getOption('tplPath', $properties, $this->modx->getOption('assets_path', $properties, MODX_ASSETS_PATH) . 'elements/chunks/');
-                $key = $path . $source;
-                if (!isset($this->_tplCache['@FILE'])) {
-                    $this->_tplCache['@FILE'] = [];
-                }
-                if (!array_key_exists($key, $this->_tplCache['@FILE'])) {
-                    if (file_exists($key)) {
-                        $content = file_get_contents($key);
-                    }
-                    $this->_tplCache['@FILE'][$key] = $content;
-                } else {
-                    $content = $this->_tplCache['@FILE'][$key];
-                }
-                if (!empty($content) && $content !== '0') {
-                    $chunk = $this->modx->newObject('modChunk', ['name' => $key]);
-                    $chunk->setCacheable(false);
-                    $output = $chunk->process($properties, $content);
-                }
-                break;
-            case '@INLINE':
-                $uniqid = uniqid();
-                $chunk = $this->modx->newObject('modChunk', ['name' => "$type-$uniqid"]);
-                $chunk->setCacheable(false);
-                $output = $chunk->process($properties, $source);
-                break;
-            case '@CHUNK':
-            default:
-                $chunk = null;
-                if (!isset($this->_tplCache['@CHUNK'])) {
-                    $this->_tplCache['@CHUNK'] = [];
-                }
-                if (!array_key_exists($source, $this->_tplCache['@CHUNK'])) {
-                    if ($chunk = $this->modx->getObject('modChunk', ['name' => $source])) {
-                        $this->_tplCache['@CHUNK'][$source] = $chunk->toArray('', true);
-                    } else {
-                        $this->_tplCache['@CHUNK'][$source] = false;
-                    }
-                } elseif (is_array($this->_tplCache['@CHUNK'][$source])) {
-                    $chunk = $this->modx->newObject('modChunk');
-                    $chunk->fromArray($this->_tplCache['@CHUNK'][$source], '', true, true, true);
-                }
-                if (is_object($chunk)) {
-                    $chunk->setCacheable(false);
-                    $output = $chunk->process($properties);
-                }
-                break;
-        }
-        return $output;
-    }
-
-    /**
-     * Get and parse a chunk (with template bindings)
-     * Modified parseTpl method from getResources package (https://github.com/opengeek/getResources)
-     *
-     * @param string $tpl The template to parse
-     * @param array|null $properties An array of options.
-     * @return string|bool The parsed chunk or false.
-     */
-    public function getChunk($tpl, $properties = null)
-    {
-        $output = false;
-        if (!empty($tpl)) {
-            $bound = [
-                'type' => '@CHUNK',
-                'value' => $tpl
-            ];
-            if (strpos($tpl, '@') === 0) {
-                $endPos = strpos($tpl, ' ');
-                if ($endPos > 2 && $endPos < 10) {
-                    $tt = substr($tpl, 0, $endPos);
-                    if (in_array($tt, $this->_validTypes)) {
-                        $bound['type'] = $tt;
-                        $bound['value'] = substr($tpl, $endPos + 1);
-                    }
-                }
-            }
-            if (is_array($bound) && isset($bound['type']) && isset($bound['value'])) {
-                $output = $this->parseChunk($bound['type'], $bound['value'], $properties);
-            }
-        }
-        return $output;
     }
 }

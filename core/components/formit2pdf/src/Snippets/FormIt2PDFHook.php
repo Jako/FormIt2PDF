@@ -44,6 +44,7 @@ class FormIt2PDFHook extends Hook
             'permissions' => $this->formit2pdf->getOption('permissions'),
             'mPDFMethods' => $this->formit2pdf->getOption('mPDFMethods'),
             'multiSeparator' => $this->formit2pdf->getOption('multiSeparator'),
+            'stationery' => $this->formit2pdf->getOption('stationery'),
         ];
     }
 
@@ -77,6 +78,7 @@ class FormIt2PDFHook extends Hook
             'userPassword' => $this->getProperty('userPassword'),
             'ownerPassword' => $this->getProperty('ownerPassword'),
             'permissions' => $this->getProperty('permissions'),
+            'stationery' => $this->getProperty('stationery'),
             'mPDFMethods' => $this->getProperty('mPDFMethods'),
         ];
 
