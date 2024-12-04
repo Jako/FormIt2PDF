@@ -9,7 +9,7 @@ $_lang['area_pdf'] = 'PDF';
 $_lang['formit2pdf.formit2pdf.pdfAuthor'] = 'Autor der PDF-Datei';
 $_lang['formit2pdf.formit2pdf.pdfCreator'] = 'Ersteller der PDF-Datei';
 $_lang['formit2pdf.formit2pdf.pdfCustomFonts'] = 'JSON-kodiertes Objekt mit benutzerdefinierten Schriftarten, siehe <a href="https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html#example">Fonts</a> in der mPDF-Dokumentation für das Array-Format. Bitte kopieren Sie die Schriftdateien in den Ordner, auf den in der Systemeinstellung `formit2pdf.customFontsFolder` verwiesen wird.';
-$_lang['formit2pdf.formit2pdf.pdfCustomFontsFolder'] = 'Pfad zum Ordner mit den benutzerdefinierten Schriftarten. Wenn der Pfad nicht festgelegt oder verfügbar ist, wird "formit2pdf.customFonts" nicht verwendet.  Die Platzhalter {core_path}, {base_path} und {assets_path} können in dieser Eigenschaft verwendet werden.';
+$_lang['formit2pdf.formit2pdf.pdfCustomFontsFolder'] = 'Pfad zum Ordner mit den benutzerdefinierten Schriftarten. Wenn der Pfad nicht festgelegt oder verfügbar ist, wird `formit2pdf.customFonts` nicht verwendet. Die Platzhalter {core_path}, {base_path} und {assets_path} können in dieser Eigenschaft verwendet werden.';
 $_lang['formit2pdf.formit2pdf.pdfDefaultFont'] = 'Standard-Schriftart der generierten PDF-Datei';
 $_lang['formit2pdf.formit2pdf.pdfDefaultFontSize'] = 'Standard-Schriftgröße der generierten PDF-Datei';
 $_lang['formit2pdf.formit2pdf.pdfFilename'] = 'Dateiname der generierten PDF-Datei';
