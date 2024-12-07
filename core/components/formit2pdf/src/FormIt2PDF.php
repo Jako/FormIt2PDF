@@ -134,7 +134,7 @@ class FormIt2PDF
             'stationery' => $this->modx->getOption($this->namespace . '.stationery', [], ''),
         ]);
 
-        $this->parse = new Parse($modx);
+        $this->parse = new Parse($this->modx);
     }
 
     /**
