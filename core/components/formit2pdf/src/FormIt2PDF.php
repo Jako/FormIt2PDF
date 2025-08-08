@@ -2,7 +2,7 @@
 /**
  * FormIt2PDF
  *
- * Copyright 2022-2024 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2022-2025 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package formit2pdf
  * @subpackage classfile
@@ -42,7 +42,7 @@ class FormIt2PDF
      * The version
      * @var string $version
      */
-    public $version = '1.0.3';
+    public $version = '1.0.4';
 
     /**
      * The class options

@@ -1,7 +1,7 @@
 {
   "name": "treehillstudio/formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "authors": [
     {
       "name": "Thomas Jakobi",
