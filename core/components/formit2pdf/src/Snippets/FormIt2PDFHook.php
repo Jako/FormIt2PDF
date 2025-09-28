@@ -69,7 +69,7 @@ class FormIt2PDFHook extends Hook
             'mgf' => $this->getProperty('mgf'),
             'orientation' => $this->getProperty('orientation'),
             'customFonts' => $this->getProperty('customFonts'),
-            'customFontsFolder' => $this->getProperty('customFontsFolder'),
+            'customFontsFolder' => $this->formit2pdf->translatePath($this->getProperty('customFontsFolder')),
             'pdfTpl' => $this->getProperty('textTpl'),
             'styleTpl' => $this->getProperty('styleTpl'),
             'title' => $this->getProperty('title'),
@@ -78,7 +78,7 @@ class FormIt2PDFHook extends Hook
             'userPassword' => $this->getProperty('userPassword'),
             'ownerPassword' => $this->getProperty('ownerPassword'),
             'permissions' => $this->getProperty('permissions'),
-            'stationery' => $this->getProperty('stationery'),
+            'stationery' => $this->formit2pdf->translatePath($this->getProperty('stationery')),
             'mPDFMethods' => $this->getProperty('mPDFMethods'),
         ];
 

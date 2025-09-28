@@ -42,7 +42,7 @@ class FormIt2PDF
      * The version
      * @var string $version
      */
-    public $version = '1.0.4';
+    public $version = '1.0.5';
 
     /**
      * The class options
@@ -122,7 +122,7 @@ class FormIt2PDF
             'mgf' => (int)$this->modx->getOption($this->namespace . '.mgf', [], 9),
             'orientation' => $this->modx->getOption($this->namespace . '.orientation', [], 'P'),
             'customFonts' => json_decode($this->modx->getOption($this->namespace . '.customFonts', [], '[]'), true),
-            'customFontsFolder' => $this->modx->getOption($this->namespace . '.customFontsFolder', [], '{core_path}components/customfonts/'),
+            'customFontsFolder' => $this->translatePath($this->modx->getOption($this->namespace . '.customFontsFolder', [], '{core_path}components/customfonts/')),
             'textTpl' => $this->modx->getOption($this->namespace . '.textTpl', [], 'tplFormIt2PDFText'),
             'styleTpl' => $this->modx->getOption($this->namespace . '.styleTpl', [], 'tplFormIt2PDFStyle'),
             'userPassword' => $this->modx->getOption($this->namespace . '.userPassword', [], ''),
@@ -130,7 +130,7 @@ class FormIt2PDF
             'permissions' => $this->modx->getOption($this->namespace . '.permissions', [], ''),
             'mPDFMethods' => $this->modx->getOption($this->namespace . '.mPDFMethods', [], ''),
             'multiSeparator' => $this->modx->getOption($this->namespace . '.multiSeparator', [], ', '),
-            'stationery' => $this->modx->getOption($this->namespace . '.stationery', [], ''),
+            'stationery' => $this->translatePath($this->modx->getOption($this->namespace . '.stationery', [], '')),
         ]);
 
         $this->parse = new Parse($this->modx);
@@ -158,6 +158,23 @@ class FormIt2PDF
             }
         }
         return $option;
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public function translatePath($path)
+    {
+        return str_replace(array(
+            '{base_path}',
+            '{core_path}',
+            '{assets_path}',
+        ), array(
+            $this->modx->getOption('base_path', null, MODX_BASE_PATH),
+            $this->modx->getOption('core_path', null, MODX_CORE_PATH),
+            $this->modx->getOption('assets_path', null, MODX_ASSETS_PATH),
+        ), $path);
     }
 
     /**
@@ -236,15 +253,6 @@ class FormIt2PDF
             // Use a PDF file as a stationery
             $stationery = $this->getOption('stationery', $pdfOptions, '');
             if ($stationery) {
-                $stationery = str_replace(array(
-                    '{base_path}',
-                    '{core_path}',
-                    '{assets_path}',
-                ), array(
-                    $this->modx->getOption('base_path', null, MODX_BASE_PATH),
-                    $this->modx->getOption('core_path', null, MODX_CORE_PATH),
-                    $this->modx->getOption('assets_path', null, MODX_ASSETS_PATH),
-                ), $stationery);
                 $this->pdf->SetDocTemplate($stationery, true);
             }
 

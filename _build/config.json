@@ -3,7 +3,7 @@
   "lowCaseName": "formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
   "author": "Thomas Jakobi",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "package": {
     "elements": {
       "chunks": [
