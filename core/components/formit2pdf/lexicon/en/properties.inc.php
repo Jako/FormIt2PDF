@@ -8,8 +8,8 @@
 $_lang['area_pdf'] = 'PDF';
 $_lang['formit2pdf.formit2pdf.pdfAuthor'] = 'Author of the PDF file';
 $_lang['formit2pdf.formit2pdf.pdfCreator'] = 'Creator of the PDF file';
-$_lang['formit2pdf.formit2pdf.pdfCustomFonts'] = 'JSON-encoded object of custom fonts, see <a href="https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html#example">Fonts</a> in the mPDF documentation for the array format. Please copy the font files to the folder referenced in the `formit2pdf.customFontsFolder` system setting.';
-$_lang['formit2pdf.formit2pdf.pdfCustomFontsFolder'] = 'Path to the custom fonts folder. If the path is not set or available, `formit2pdf.customFonts` is not used. The {core_path}, {base_path} and {assets_path} placeholders can be used in this property.';
+$_lang['formit2pdf.formit2pdf.pdfCustomFonts'] = 'JSON-encoded object of custom fonts, see <a href="https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html#example">Fonts</a> in the mPDF documentation for the array format. Please copy the font files to the folder referenced in the `pdfCustomFontsFolder` property or `formit2pdf.customFontsFolder` system setting.';
+$_lang['formit2pdf.formit2pdf.pdfCustomFontsFolder'] = 'Path to the custom fonts folder. If the path is not set or available, the `pdfCustomFonts` property or the `formit2pdf.customFonts` system setting is not used. The {core_path}, {base_path} and {assets_path} placeholders can be used in this property.';
 $_lang['formit2pdf.formit2pdf.pdfDefaultFont'] = 'Default font of the generated PDF';
 $_lang['formit2pdf.formit2pdf.pdfDefaultFontSize'] = 'Default font size of the generated PDF';
 $_lang['formit2pdf.formit2pdf.pdfFilename'] = 'Filename of the generated PDF';
