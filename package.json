@@ -1,16 +1,19 @@
 {
+  "fullname": "FormIt2PDF",
   "name": "formit2pdf",
   "description": "FormIt hook for sending form submissions as PDF attachment",
   "author": "Thomas Jakobi <office@treehillstudio.com>",
   "private": true,
-  "devDependencies": {
-    "gulp": "^5.0.1",
-    "gulp-replace": "^1.1.4"
+  "version": "1.0.6",
+  "phpversion": "7.4",
+  "modxversion": "2.8",
+  "startYear": "2022",
+  "scripts": {
+    "build": "node build.js",
+    "build:bump": "node build.js bump"
   },
   "browserslist": [
-    "last 2 version",
     "> 1%",
-    "maintained node versions",
-    "not dead"
+    "defaults"
   ]
 }
