@@ -22,7 +22,7 @@ $_lang['formit2pdf.formit2pdf.pdfMgr'] = 'Right Margin of the generated PDF';
 $_lang['formit2pdf.formit2pdf.pdfMgt'] = 'Top Margin of the generated PDF';
 $_lang['formit2pdf.formit2pdf.pdfMode'] = 'mPDF mode. See <a href="https://mpdf.github.io/reference/mpdf-functions/mpdf.html#parameters" target="_blank">mode parameter</a> and <a href="https://mpdf.github.io/fonts-languages/choosing-a-configuration-v5-x.html" target="_blank">choosing a configuration</a> in the mPDF documentation for possible values.';
 $_lang['formit2pdf.formit2pdf.pdfMPDFMethods'] = 'JSON-encoded array of callable mPDF method names';
-$_lang['formit2pdf.formit2pdf.pdfMultiSeparator'] = 'The default separator for array values sent through checkboxes/multi-selects. Defaults to ’,’.';
+$_lang['formit2pdf.formit2pdf.pdfMultiSeparator'] = 'The default separator for array values sent through checkboxes/multi-selects. Defaults to ‘,’.';
 $_lang['formit2pdf.formit2pdf.pdfOrientation'] = 'PDF Orientation. If you want to change the orientation of a "named" PDF page size you have to append -L to the PDF page size string (i.e. A4-L).';
 $_lang['formit2pdf.formit2pdf.pdfOwnerPassword'] = 'Password for full access and permissions to the generated PDF';
 $_lang['formit2pdf.formit2pdf.pdfPermissions'] = 'JSON-encoded array of permissions granted to the end-user of the PDF file. see <a href="https://mpdf.github.io/reference/mpdf-functions/setprotection.html#parameters">permissions</a> in the mPDF documentation for possible values.';
